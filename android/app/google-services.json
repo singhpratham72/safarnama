@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "51441097431",
+    "firebase_url": "https://safarnama-9b3f1.firebaseio.com",
+    "project_id": "safarnama-9b3f1",
+    "storage_bucket": "safarnama-9b3f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51441097431:android:33ae62e8d44dabec20ae92",
+        "android_client_info": {
+          "package_name": "dap.safarnama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51441097431-7kq2aun0htvrpfasc00i3dcqentt6ipq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOyMKDqTOVHffLIWVpMrxyUR9c1Q95mDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51441097431-7kq2aun0htvrpfasc00i3dcqentt6ipq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51441097431-g3r00e808krab1qod6q1rjr1eoabikg4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dap.safarnama"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
