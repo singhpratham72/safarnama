@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:safarnama/constants.dart';
 import 'package:safarnama/tabs/home_tab.dart';
 import 'package:safarnama/tabs/rent_tab.dart';
 import 'package:safarnama/tabs/user_tab.dart';
 import 'package:safarnama/tabs/wishlist_tab.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'dart:io';
+import 'package:path/path.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -19,10 +25,139 @@ class _LandingScreenState extends State<LandingScreen> {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
-        body: PageView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: _pageController,
-          children: [HomeTab(), WishListTab(), RentTab(), UserTab()],
+        body: Padding(
+          padding: EdgeInsets.only(top: selectedTab != 3 ? 64.0 : 0.0),
+          child: Column(
+            children: [
+              if (selectedTab == 0)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hello, Pratham.',
+                              style: greyText.copyWith(fontSize: 20.0),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                  text: 'Find your ',
+                                  style: headingText,
+                                  children: [
+                                    TextSpan(
+                                        text: 'trek',
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).accentColor))
+                                  ]),
+                            ),
+                          ]),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTab = 3;
+                            _pageController.jumpToPage(selectedTab);
+                          });
+                        },
+                        child: Container(
+                          height: 40.0,
+                          width: 40.0,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              color: Theme.of(context).accentColor),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              if (selectedTab == 1)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            text: 'Saved ',
+                            style: headingText.copyWith(fontSize: 32.0),
+                            children: [
+                              TextSpan(
+                                  text: 'treks',
+                                  style: TextStyle(
+                                      color: Theme.of(context).accentColor))
+                            ]),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTab = 3;
+                            _pageController.jumpToPage(selectedTab);
+                          });
+                        },
+                        child: Container(
+                          height: 40.0,
+                          width: 40.0,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              color: Theme.of(context).accentColor),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              if (selectedTab == 2)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            text: 'Rent your ',
+                            style: headingText.copyWith(fontSize: 32.0),
+                            children: [
+                              TextSpan(
+                                  text: 'gear',
+                                  style: TextStyle(
+                                      color: Theme.of(context).accentColor))
+                            ]),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTab = 3;
+                            _pageController.jumpToPage(selectedTab);
+                          });
+                        },
+                        child: Container(
+                          height: 40.0,
+                          width: 40.0,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              color: Theme.of(context).accentColor),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              Expanded(
+                child: PageView(
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: _pageController,
+                  children: [HomeTab(), WishListTab(), RentTab(), UserTab()],
+                ),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(

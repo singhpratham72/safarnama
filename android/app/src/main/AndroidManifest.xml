@@ -2,6 +2,7 @@
     package="dap.safarnama">
    <application
         android:label="safarnama"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
