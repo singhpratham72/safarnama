@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
 import 'package:safarnama/models/user.dart';
@@ -16,13 +15,13 @@ class UserTab extends StatelessWidget {
     final theme = Theme.of(context).copyWith(dividerColor: Colors.transparent);
     DatabaseService db = DatabaseService();
 
-    //To get image from device gallery
-    Future<void> getImage() async {
-      final imagePicker = ImagePicker();
-      final pickedImage =
-          await imagePicker.getImage(source: ImageSource.gallery);
-      await db.uploadPicture(pickedImage.path);
-    }
+    // //To get image from device gallery
+    // Future<void> getImage() async {
+    //   final imagePicker = ImagePicker();
+    //   final pickedImage =
+    //       await imagePicker.getImage(source: ImageSource.gallery);
+    //   await db.uploadPicture(pickedImage.path);
+    // }
 
     return Center(
       child: Center(
@@ -128,7 +127,10 @@ class UserTab extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          // user.name = 'Kashvi';
+                          // db.updateUser(user.getUserMap());
+                        },
                         child: Text(
                           "Gear Rentals",
                           style: headingText,

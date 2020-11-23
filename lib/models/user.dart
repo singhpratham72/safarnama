@@ -20,4 +20,16 @@ class User with ChangeNotifier {
         savedTreks: data['savedTreks'],
         rentedGear: data['rentedGear']);
   }
+
+  Map<String, dynamic> getUserMap() {
+    Map<String, dynamic> userData = {
+      'name': name,
+      'phone': phone,
+      'email': email,
+      'bookings': bookings,
+      'savedTreks': savedTreks,
+      'rentedGear': rentedGear
+    };
+    return userData;
+  }
 }

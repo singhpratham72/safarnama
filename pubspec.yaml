@@ -20,12 +20,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.1
   google_fonts: ^1.1.1
-  firebase_core: "0.5.2"
+  firebase_core: ^0.5.2
   firebase_auth: ^0.18.3
   cloud_firestore: ^0.14.3
   firebase_storage: ^5.0.1
   provider: ^4.3.2+2
-  image_picker: ^0.6.7+14
   path_provider: ^1.6.24
   geoflutterfire: ^2.2.1
 

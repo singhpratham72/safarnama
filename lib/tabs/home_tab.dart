@@ -48,6 +48,7 @@ class HomeTab extends StatelessWidget {
                       children: snapshot.data.docs.map((trekDoc) {
                         Map<String, dynamic> trekData = trekDoc.data();
                         return TrekCardA(
+                          id: trekDoc.id,
                           name: trekData['name'],
                           city: trekData['city'],
                           state: trekData['state'],
@@ -117,6 +118,7 @@ class HomeTab extends StatelessWidget {
                           children: snapshot.data.docs.map((trekDoc) {
                             Map<String, dynamic> trekData = trekDoc.data();
                             return TrekCardB(
+                                id: trekDoc.id,
                                 name: trekData['name'],
                                 city: trekData['city'],
                                 state: trekData['state'],

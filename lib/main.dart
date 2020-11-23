@@ -8,6 +8,7 @@ import 'package:safarnama/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:safarnama/screens/trek_screen.dart';
 import 'dart:async';
 
 import 'package:safarnama/services/authentication_service.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignUpScreen(),
           '/home': (context) => LandingScreen(),
+          '/trek': (context) => TrekScreen(),
         },
         theme: ThemeData(
           accentColor: Color(0xFF06BEBE),

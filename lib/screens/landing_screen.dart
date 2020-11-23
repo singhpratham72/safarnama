@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
+import 'package:safarnama/models/user.dart';
 import 'package:safarnama/tabs/home_tab.dart';
 import 'package:safarnama/tabs/rent_tab.dart';
 import 'package:safarnama/tabs/user_tab.dart';
-import 'package:safarnama/tabs/wishlist_tab.dart';
-import 'package:image_picker/image_picker.dart';
-
-import 'dart:io';
-import 'package:path/path.dart';
+import 'package:safarnama/tabs/saved_tab.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -22,6 +19,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
@@ -40,7 +38,7 @@ class _LandingScreenState extends State<LandingScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Hello, Pratham.',
+                              'Hello, ${user.name}.',
                               style: greyText.copyWith(fontSize: 20.0),
                             ),
                             RichText(
@@ -153,7 +151,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 child: PageView(
                   physics: NeverScrollableScrollPhysics(),
                   controller: _pageController,
-                  children: [HomeTab(), WishListTab(), RentTab(), UserTab()],
+                  children: [HomeTab(), SavedTab(), RentTab(), UserTab()],
                 ),
               ),
             ],
@@ -161,16 +159,17 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.0),
-                  topRight: Radius.circular(24.0)),
-              boxShadow: [
-                BoxShadow(
-                    color: Color(0xFFEFEEEE).withOpacity(0.82),
-                    spreadRadius: 5.0,
-                    blurRadius: 7,
-                    offset: Offset(0, -8))
-              ]),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24.0),
+                topRight: Radius.circular(24.0)),
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xFFEFEEEE).withOpacity(0.82),
+                  spreadRadius: 5.0,
+                  blurRadius: 7,
+                  offset: Offset(0, -8))
+            ],
+          ),
           child: BottomNavigationBar(
             currentIndex: selectedTab,
             onTap: (value) {

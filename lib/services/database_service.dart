@@ -46,6 +46,10 @@ class DatabaseService {
         .map((snap) => userModel.User.fromMap(snap.data()));
   }
 
+  Future<void> updateUser(Map<String, dynamic> userData) async {
+    return await usersRef.doc(_firebaseAuth.currentUser.uid).update(userData);
+  }
+
   Future<void> uploadPicture(String filePath) async {
     File file = File(filePath);
 
