@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:safarnama/services/database_service.dart';
 
 class User with ChangeNotifier {
+  DatabaseService db = DatabaseService();
+
   String name, phone, email;
   List rentedGear, savedTreks, bookings;
   User(

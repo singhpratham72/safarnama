@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
 import 'package:safarnama/services/authentication_service.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -61,6 +62,24 @@ class _LoginScreenState extends State<LoginScreen> {
         _loginFormLoading = false;
       });
     }
+  }
+
+  void _googleSignIn() async {
+    setState(() {
+      _loginFormLoading = true;
+    });
+    String _loginFeedback =
+        await context.read<AuthenticationService>().signInWithGoogle();
+    if (_loginFeedback != null) {
+      print(_loginFeedback);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: Duration(seconds: 3),
+        content: Text(_loginFeedback),
+      ));
+    }
+    setState(() {
+      _loginFormLoading = false;
+    });
   }
 
   final TextEditingController _emailController = TextEditingController();
@@ -173,6 +192,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Login",
                                 style: buttonText,
                               ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 54.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          _googleSignIn();
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Or sign-in with ',
+                              style: greyText.copyWith(fontSize: 18.0),
+                            ),
+                            Icon(
+                              FontAwesomeIcons.google,
+                              color: Theme.of(context).accentColor,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     GestureDetector(

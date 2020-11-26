@@ -66,7 +66,7 @@ class _TrekScreenState extends State<TrekScreen> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
+                                  const EdgeInsets.symmetric(vertical: 16.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment:
@@ -132,8 +132,8 @@ class _TrekScreenState extends State<TrekScreen> {
                               style: cardText.copyWith(fontSize: 20.0),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              padding: const EdgeInsets.only(
+                                  top: 10.0, bottom: 16.0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

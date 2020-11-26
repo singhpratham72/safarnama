@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
-import 'package:safarnama/models/user.dart';
+import 'package:safarnama/models/user.dart' as userModel;
 import 'package:safarnama/tabs/home_tab.dart';
 import 'package:safarnama/tabs/rent_tab.dart';
 import 'package:safarnama/tabs/user_tab.dart';
@@ -19,7 +20,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<userModel.User>(context);
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
@@ -65,6 +66,12 @@ class _LandingScreenState extends State<LandingScreen> {
                           height: 40.0,
                           width: 40.0,
                           decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: NetworkImage(FirebaseAuth
+                                        .instance.currentUser.photoURL ??
+                                    'https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/users%2Fanonymous.jpg?alt=media&token=3a3df200-04f6-43d3-87eb-a33fa4c3b7b4'),
+                              ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
                               color: Theme.of(context).accentColor),
@@ -102,6 +109,12 @@ class _LandingScreenState extends State<LandingScreen> {
                           height: 40.0,
                           width: 40.0,
                           decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: NetworkImage(FirebaseAuth
+                                        .instance.currentUser.photoURL ??
+                                    'https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/users%2Fanonymous.jpg?alt=media&token=3a3df200-04f6-43d3-87eb-a33fa4c3b7b4'),
+                              ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
                               color: Theme.of(context).accentColor),
@@ -139,6 +152,12 @@ class _LandingScreenState extends State<LandingScreen> {
                           height: 40.0,
                           width: 40.0,
                           decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: NetworkImage(FirebaseAuth
+                                        .instance.currentUser.photoURL ??
+                                    'https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/users%2Fanonymous.jpg?alt=media&token=3a3df200-04f6-43d3-87eb-a33fa4c3b7b4'),
+                              ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
                               color: Theme.of(context).accentColor),

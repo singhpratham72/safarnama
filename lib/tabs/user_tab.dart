@@ -1,27 +1,20 @@
-import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
-import 'package:safarnama/models/user.dart';
+import 'package:safarnama/models/user.dart' as userModel;
 import 'package:safarnama/services/authentication_service.dart';
 import 'package:safarnama/services/database_service.dart';
 import 'package:safarnama/widgets/displayDetails_widget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserTab extends StatelessWidget {
+  final DatabaseService db = DatabaseService();
+
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<userModel.User>(context);
     final theme = Theme.of(context).copyWith(dividerColor: Colors.transparent);
-    DatabaseService db = DatabaseService();
-
-    // //To get image from device gallery
-    // Future<void> getImage() async {
-    //   final imagePicker = ImagePicker();
-    //   final pickedImage =
-    //       await imagePicker.getImage(source: ImageSource.gallery);
-    //   await db.uploadPicture(pickedImage.path);
-    // }
 
     return Center(
       child: Center(
@@ -43,14 +36,20 @@ class UserTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onLongPress: () {
+                    onTap: () async {
+                      print(FirebaseAuth.instance.currentUser.photoURL);
                       // getImage();
                     },
                     child: Container(
                       height: 180.0,
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.fitHeight,
+                          image: NetworkImage(FirebaseAuth
+                                  .instance.currentUser.photoURL ??
+                              'https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/users%2Fanonymous.jpg?alt=media&token=3a3df200-04f6-43d3-87eb-a33fa4c3b7b4'),
+                        ),
                         shape: BoxShape.circle,
-                        color: Colors.black,
                         border: Border.all(color: Colors.white, width: 3.0),
                       ),
                     ),
@@ -98,7 +97,7 @@ class UserTab extends StatelessWidget {
                             DisplayDetailsContainer(
                               text: user.email,
                               hintText: "E-mail",
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -127,13 +126,52 @@ class UserTab extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: GestureDetector(
-                        onTap: () {
-                          // user.name = 'Kashvi';
-                          // db.updateUser(user.getUserMap());
-                        },
+                        onTap: () {},
                         child: Text(
                           "Gear Rentals",
                           style: headingText,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      height: 20.0,
+                      color: Theme.of(context).disabledColor,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 10.0, bottom: 10.0, right: 8.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final bool connected = await db.checkGoogleConnect();
+
+                          if (!connected) {
+                            String message = await context
+                                .read<AuthenticationService>()
+                                .linkGoogleAccount();
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              padding:
+                                  EdgeInsets.only(bottom: 16.0, left: 20.0),
+                              content: Text(message),
+                            ));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              padding:
+                                  EdgeInsets.only(bottom: 16.0, left: 20.0),
+                              content: Text(
+                                  'Your account is already connected to Google.'),
+                            ));
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Connect with Google',
+                              style: headingText,
+                            ),
+                            Icon(FontAwesomeIcons.google,
+                                color: Theme.of(context).accentColor),
+                          ],
                         ),
                       ),
                     ),

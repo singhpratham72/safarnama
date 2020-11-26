@@ -21,6 +21,9 @@ class DatabaseService {
   final CollectionReference treksRef =
       FirebaseFirestore.instance.collection('Treks');
 
+  final CollectionReference gearsRef =
+      FirebaseFirestore.instance.collection('Gears');
+
   Future<void> addUser({String name, String phone}) async {
     List<String> dummyList = [];
     Map<String, dynamic> userData = {
@@ -87,5 +90,43 @@ class DatabaseService {
       'type': ''
     };
     return await treksRef.add(trekData);
+  }
+
+  Future<void> addSearchString() async {
+    QuerySnapshot treks = await treksRef.get();
+    treks.docs.forEach((trek) {
+      String name = trek.data()['name'];
+      String searchString = name.substring(0, 1);
+      treksRef.doc(trek.id).update({'searchString': searchString});
+      print(searchString);
+    });
+  }
+
+  Future<DocumentReference> addGear() async {
+    Map<String, dynamic> gearData = {
+      'available': true,
+      'desc': 'A durable trkking pole.',
+      'name': 'Deca A200',
+      'price': 900,
+      // 'size': ['S', 'M', 'L', 'XL'],
+      'type': 'pole',
+      'image':
+          "https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/gear%2Fpole1.jpg?alt=media&token=e5cecc13-c8d5-45b1-a4af-4663da93ee26"
+    };
+
+    return await gearsRef.add(gearData);
+  }
+
+  Future<QuerySnapshot> searchTrekByName(String searchField) async {
+    return await treksRef
+        .where('searchString',
+            isEqualTo: searchField.substring(0, 1).toUpperCase())
+        .get();
+  }
+
+  Future<bool> checkGoogleConnect() async {
+    List<String> signInMethods = await _firebaseAuth
+        .fetchSignInMethodsForEmail(_firebaseAuth.currentUser.email);
+    return signInMethods.contains('google.com');
   }
 }

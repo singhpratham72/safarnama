@@ -68,9 +68,11 @@ class TrekCardA extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        name,
-                        style: cardText,
+                      Flexible(
+                        child: Text(
+                          name,
+                          style: cardText,
+                        ),
                       ),
                       Text(
                         '$city, $state',
@@ -148,9 +150,11 @@ class TrekCardB extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: cardText.copyWith(fontSize: 16.0),
+                  Flexible(
+                    child: Text(
+                      name,
+                      style: cardText.copyWith(fontSize: 16.0),
+                    ),
                   ),
                   Row(
                     children: [
