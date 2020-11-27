@@ -29,6 +29,9 @@ dependencies:
   geoflutterfire: ^2.2.1
   font_awesome_flutter: ^8.10.0
   google_sign_in: ^4.5.6
+  syncfusion_flutter_datepicker: ^18.3.51-beta
+  intl: ^0.16.1
+  uuid: ^2.2.2
 
 
 dev_dependencies:

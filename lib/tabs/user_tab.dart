@@ -110,8 +110,8 @@ class UserTab extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: GestureDetector(
                         onTap: () async {
-                          // await db.addTrek();
-                          // print('Trek Added');
+                          await db.addTrek();
+                          print('Trek Added');
                         },
                         child: Text(
                           "Bookings",
