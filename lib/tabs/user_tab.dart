@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
 import 'package:safarnama/models/user.dart' as userModel;
+import 'package:safarnama/screens/booking_history_screen.dart';
 import 'package:safarnama/services/authentication_service.dart';
 import 'package:safarnama/services/database_service.dart';
 import 'package:safarnama/widgets/displayDetails_widget.dart';
@@ -110,8 +111,14 @@ class UserTab extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: GestureDetector(
                         onTap: () async {
-                          await db.addTrek();
-                          print('Trek Added');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ChangeNotifierProvider.value(
+                                        value: user,
+                                        child: BookingHistoryScreen(),
+                                      )));
                         },
                         child: Text(
                           "Bookings",
@@ -119,20 +126,20 @@ class UserTab extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(
-                      height: 20.0,
-                      color: Theme.of(context).disabledColor,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          "Gear Rentals",
-                          style: headingText,
-                        ),
-                      ),
-                    ),
+                    // Divider(
+                    //   height: 20.0,
+                    //   color: Theme.of(context).disabledColor,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    //   child: GestureDetector(
+                    //     onTap: () {},
+                    //     child: Text(
+                    //       "Test Button",
+                    //       style: headingText,
+                    //     ),
+                    //   ),
+                    // ),
                     Divider(
                       height: 20.0,
                       color: Theme.of(context).disabledColor,

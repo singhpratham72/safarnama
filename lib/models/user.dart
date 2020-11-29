@@ -5,14 +5,8 @@ class User with ChangeNotifier {
   DatabaseService db = DatabaseService();
 
   String name, phone, email;
-  List rentedGear, savedTreks, bookings;
-  User(
-      {this.name,
-      this.phone,
-      this.email,
-      this.bookings,
-      this.rentedGear,
-      this.savedTreks});
+  List savedTreks, bookings;
+  User({this.name, this.phone, this.email, this.bookings, this.savedTreks});
 
   factory User.fromMap(Map data) {
     return User(
@@ -20,8 +14,12 @@ class User with ChangeNotifier {
         phone: data['phone'],
         email: data['email'],
         bookings: data['bookings'],
-        savedTreks: data['savedTreks'],
-        rentedGear: data['rentedGear']);
+        savedTreks: data['savedTreks']);
+  }
+
+  void cancelBooking(Map booking) {
+    bookings.remove(booking);
+    notifyListeners();
   }
 
   Map<String, dynamic> getUserMap() {
@@ -31,7 +29,6 @@ class User with ChangeNotifier {
       'email': email,
       'bookings': bookings,
       'savedTreks': savedTreks,
-      'rentedGear': rentedGear
     };
     return userData;
   }

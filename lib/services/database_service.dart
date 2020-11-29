@@ -24,13 +24,12 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('Gears');
 
   Future<void> addUser({String name, String phone}) async {
-    List<String> dummyList = [];
+    List<dynamic> dummyList = [];
     Map<String, dynamic> userData = {
       'name': name,
       'phone': phone,
       'email': _firebaseAuth.currentUser.email,
       'savedTreks': dummyList,
-      'rentedGear': dummyList,
       'bookings': dummyList
     };
     return await usersRef.doc(_firebaseAuth.currentUser.uid).set(userData);
@@ -120,12 +119,26 @@ class DatabaseService {
     return await treksRef.add(trekData);
   }
 
+  Future addReview(
+      {String trekID, String review, int rating, String name}) async {
+    Map<String, dynamic> reviewData = {
+      'review': review,
+      'rating': rating,
+      'userName': name
+    };
+    return await treksRef
+        .doc(trekID)
+        .collection('Reviews')
+        .doc(_firebaseAuth.currentUser.uid)
+        .set(reviewData);
+  }
+
   Future<void> addSearchString() async {
-    QuerySnapshot treks = await treksRef.get();
-    treks.docs.forEach((trek) {
-      String name = trek.data()['name'];
+    QuerySnapshot treks = await gearsRef.get();
+    treks.docs.forEach((gear) {
+      String name = gear.data()['name'];
       String searchString = name.substring(0, 1);
-      treksRef.doc(trek.id).update({'searchString': searchString});
+      gearsRef.doc(gear.id).update({'searchString': searchString});
       print(searchString);
     });
   }
@@ -150,6 +163,27 @@ class DatabaseService {
         .where('searchString',
             isEqualTo: searchField.substring(0, 1).toUpperCase())
         .get();
+  }
+
+  Future<QuerySnapshot> searchGearByName(String searchField) async {
+    return await gearsRef
+        .where('searchString',
+            isEqualTo: searchField.substring(0, 1).toUpperCase())
+        .get();
+  }
+
+  Future<String> getTrekName(String trekID) async {
+    return await treksRef
+        .doc(trekID)
+        .get()
+        .then((trekData) => trekData.data()['name']);
+  }
+
+  Future<String> getTrekImage(String trekID) async {
+    return await treksRef
+        .doc(trekID)
+        .get()
+        .then((trekData) => trekData.data()['images'][0]);
   }
 
   Future<bool> checkGoogleConnect() async {

@@ -114,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 88.0,
               ),
               TextField(
+                autocorrect: false,
                 controller: _emailController,
                 cursorColor: Theme.of(context).accentColor,
                 keyboardType: TextInputType.emailAddress,
@@ -139,6 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 16.0,
               ),
               TextField(
+                autocorrect: false,
                 controller: _passwordController,
                 obscureText: true,
                 cursorColor: Theme.of(context).accentColor,

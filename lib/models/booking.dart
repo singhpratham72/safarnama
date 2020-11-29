@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Booking with ChangeNotifier {
-  String bookingID, trekID;
+  String bookingID, trekID, trekName;
   int price;
   List<Map> people, trekGear;
   Timestamp startDate, endDate;
 
   Booking(
       {this.bookingID,
+      this.trekName,
       this.trekID,
       this.price,
       this.people,
@@ -23,6 +24,11 @@ class Booking with ChangeNotifier {
 
   void updatePeople(List<Map<String, dynamic>> newPeople) {
     people = newPeople;
+    notifyListeners();
+  }
+
+  void updateTrekName(String newName) {
+    trekName = newName;
     notifyListeners();
   }
 
@@ -59,7 +65,8 @@ class Booking with ChangeNotifier {
       'people': people,
       'trekGear': trekGear,
       'startDate': startDate,
-      'endDate': endDate
+      'endDate': endDate,
+      'trekName': trekName
     };
     return bookingMap;
   }

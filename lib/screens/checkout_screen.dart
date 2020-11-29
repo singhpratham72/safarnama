@@ -588,7 +588,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                             style: greyText.copyWith(fontSize: 18.0),
                           ),
                           Text(
-                            '₹${widget.trekData['price']}',
+                            '₹${widget.trekData['price']}/-',
                             style: headingText.copyWith(
                                 fontSize: 22.0, color: Colors.black87),
                           )
@@ -683,7 +683,9 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     setState(() {
                       _checkout = true;
                     });
-                    booking.updateID(uuid.v1());
+                    String bookingUID =
+                        'SF' + uuid.v1().toUpperCase().substring(25, 32);
+                    booking.updateID(bookingUID);
                     Map<String, dynamic> bookingMap = booking.getBookingMap();
                     user.bookings.add(bookingMap);
                     await db.updateUser(user.getUserMap());

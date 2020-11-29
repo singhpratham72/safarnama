@@ -4,7 +4,9 @@ import 'package:safarnama/models/booking.dart';
 import 'package:safarnama/models/user.dart';
 import 'package:safarnama/screens/checkout_screen.dart';
 import 'package:safarnama/services/database_service.dart';
+import 'package:safarnama/widgets/add_review.dart';
 import 'package:safarnama/widgets/image_swipe.dart';
+import 'package:safarnama/widgets/review_card.dart';
 
 import '../constants.dart';
 
@@ -19,10 +21,13 @@ class TrekScreen extends StatefulWidget {
 class _TrekScreenState extends State<TrekScreen> {
   final DatabaseService db = DatabaseService();
 
+  void reviewAdder() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    bool trekSaved = user.savedTreks.contains(widget.trekID);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -69,7 +74,7 @@ class _TrekScreenState extends State<TrekScreen> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 16.0),
+                                    const EdgeInsets.symmetric(vertical: 24.0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
@@ -136,7 +141,7 @@ class _TrekScreenState extends State<TrekScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 10.0, bottom: 16.0),
+                                    top: 10.0, bottom: 24.0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -240,10 +245,99 @@ class _TrekScreenState extends State<TrekScreen> {
                                   ],
                                 ),
                               ),
-                              Text(
-                                'Customer Reviews',
-                                style: cardText.copyWith(fontSize: 20.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Customer Reviews',
+                                    style: cardText.copyWith(fontSize: 20.0),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                          context: context,
+                                          isScrollControlled: true,
+                                          builder: (context) => AddReview(
+                                                setState: reviewAdder,
+                                                userName: user.name,
+                                                trekID: widget.trekID,
+                                              ));
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 2.0, horizontal: 6.0),
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).accentColor,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                              color: Theme.of(context)
+                                                  .accentColor)),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Post',
+                                            style: buttonText.copyWith(
+                                                fontSize: 14.0),
+                                          ),
+                                          Icon(
+                                            Icons.add,
+                                            size: 18.0,
+                                            color: Colors.white,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
+                              FutureBuilder(
+                                future: db.treksRef
+                                    .doc(widget.trekID)
+                                    .collection('Reviews')
+                                    .get(),
+                                builder: (context, AsyncSnapshot reviewSnap) {
+                                  if (reviewSnap.hasError)
+                                    return Container(
+                                      child: Center(
+                                        child:
+                                            Text('Error: ${reviewSnap.error}'),
+                                      ),
+                                    );
+                                  if (reviewSnap.connectionState ==
+                                      ConnectionState.done) {
+                                    if (!reviewSnap.data.docs.isEmpty)
+                                      return ListView(
+                                        scrollDirection: Axis.vertical,
+                                        shrinkWrap: true,
+                                        padding: EdgeInsets.only(
+                                          top: 20.0,
+                                          bottom: 12.0,
+                                        ),
+                                        children: reviewSnap.data.docs
+                                            .map<Widget>((reviewDoc) {
+                                          Map<String, dynamic> reviewDocData =
+                                              reviewDoc.data();
+                                          return ReviewCard(
+                                            name: reviewDocData['userName'],
+                                            review: reviewDocData['review'],
+                                            rating: reviewDocData['rating'],
+                                          );
+                                        }).toList(),
+                                      );
+                                    else
+                                      return Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Center(
+                                            child: (Text('No reviews yet.'))),
+                                      );
+                                  }
+                                  return Container(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                              )
                             ],
                           ),
                         ),
@@ -272,36 +366,42 @@ class _TrekScreenState extends State<TrekScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GestureDetector(
-                            onTap: () async {
-                              if (trekSaved) {
-                                user.savedTreks.remove(widget.trekID);
-                                setState(() {});
-                                await db.updateUser(user.getUserMap());
-                              } else {
-                                user.savedTreks.add(widget.trekID);
-                                setState(() {});
-                                await db.updateUser(user.getUserMap());
-                              }
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              height: 54.0,
-                              width: 54.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: Theme.of(context).dialogBackgroundColor,
+                          StatefulBuilder(
+                              builder: (context, StateSetter _setState) {
+                            bool trekSaved =
+                                user.savedTreks.contains(widget.trekID);
+                            return GestureDetector(
+                              onTap: () async {
+                                if (trekSaved) {
+                                  user.savedTreks.remove(widget.trekID);
+                                  _setState(() {});
+                                  await db.updateUser(user.getUserMap());
+                                } else {
+                                  user.savedTreks.add(widget.trekID);
+                                  _setState(() {});
+                                  await db.updateUser(user.getUserMap());
+                                }
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 54.0,
+                                width: 54.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color:
+                                      Theme.of(context).dialogBackgroundColor,
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12.0),
+                                child: Icon(
+                                  trekSaved
+                                      ? Icons.favorite
+                                      : Icons.favorite_border_outlined,
+                                  color: Theme.of(context).accentColor,
+                                  size: 32.0,
+                                ),
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 12.0),
-                              child: Icon(
-                                trekSaved
-                                    ? Icons.favorite
-                                    : Icons.favorite_border_outlined,
-                                color: Theme.of(context).accentColor,
-                                size: 32.0,
-                              ),
-                            ),
-                          ),
+                            );
+                          }),
                           GestureDetector(
                             onTap: () {
                               showModalBottomSheet(
@@ -311,8 +411,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                 builder: (context) => MultiProvider(
                                   providers: [
                                     ChangeNotifierProvider(
-                                      create: (context) =>
-                                          Booking(trekID: widget.trekID),
+                                      create: (context) => Booking(
+                                          trekID: widget.trekID,
+                                          trekName: trekData['name']),
                                     ),
                                     ChangeNotifierProvider.value(value: user)
                                   ],

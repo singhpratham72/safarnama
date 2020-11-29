@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/models/user.dart';
+import 'package:safarnama/screens/gear_screen.dart';
 import 'package:safarnama/services/database_service.dart';
 
 import '../constants.dart';
@@ -27,15 +28,15 @@ class GearCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => ChangeNotifierProvider.value(
-        //           value: user,
-        //           child: TrekScreen(
-        //             trekID: id,
-        //           )),
-        //     ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider.value(
+                  value: user,
+                  child: GearScreen(
+                    gearID: id,
+                  )),
+            ));
       },
       child: Container(
         margin: EdgeInsets.only(right: 20.0),

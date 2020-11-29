@@ -28,6 +28,7 @@ class _LandingScreenState extends State<LandingScreen> {
           padding: EdgeInsets.only(top: selectedTab != 3 ? 64.0 : 0.0),
           child: Column(
             children: [
+              // HomeTab Header
               if (selectedTab == 0)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -80,6 +81,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     ],
                   ),
                 ),
+              // SavedTab Header
               if (selectedTab == 1)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -123,6 +125,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     ],
                   ),
                 ),
+              // RentTab Header
               if (selectedTab == 2)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),

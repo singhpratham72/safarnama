@@ -100,7 +100,7 @@ class _HomeTabState extends State<HomeTab> {
                     cursorColor: Theme.of(context).accentColor,
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Search for treks',
+                        hintText: 'Search for treks in India',
                         hintStyle:
                             TextStyle(color: Theme.of(context).disabledColor),
                         contentPadding: EdgeInsets.symmetric(
