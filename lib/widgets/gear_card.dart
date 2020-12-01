@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/models/user.dart';
 import 'package:safarnama/screens/gear_screen.dart';
-import 'package:safarnama/services/database_service.dart';
 
 import '../constants.dart';
 

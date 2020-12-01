@@ -432,3 +432,176 @@ class TrekCardC extends StatelessWidget {
     );
   }
 }
+
+//View All Trek Card
+class TrekCardD extends StatelessWidget {
+  final String id, name, url, city, state, difficulty;
+  final int price, duration;
+
+  TrekCardD(
+      {this.id,
+      this.name,
+      this.city,
+      this.state,
+      this.url,
+      this.price,
+      this.difficulty,
+      this.duration});
+
+  @override
+  Widget build(BuildContext context) {
+    final db = DatabaseService();
+    final user = Provider.of<User>(context);
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider.value(
+                  value: user,
+                  child: TrekScreen(
+                    trekID: id,
+                  )),
+            ));
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 20.0, right: 20.0),
+        padding: EdgeInsets.only(right: 16.0),
+        height: 124.0,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(16.0)),
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xFF000000).withOpacity(0.15),
+                  spreadRadius: 2.0,
+                  blurRadius: 10.0,
+                  offset: Offset(9, 9))
+            ]),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width / 4,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: NetworkImage(url))),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: cardText.copyWith(fontSize: 16.0),
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on_outlined,
+                          size: 12.0,
+                          color: Color(0xFFC1C1C1),
+                        ),
+                        Text(
+                          '$city, $state',
+                          style: greyText.copyWith(fontSize: 12.0),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      '₹$price',
+                      style: highlightText.copyWith(fontSize: 14.0),
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.signal_cellular_alt,
+                              color: Theme.of(context).accentColor,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Difficulty',
+                                  style: headingText.copyWith(
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '$difficulty',
+                                  style: headingText.copyWith(
+                                    fontSize: 12.0,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 16.0,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.timer,
+                              color: Theme.of(context).accentColor,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Duration',
+                                  style: headingText.copyWith(
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '$duration Days',
+                                  style: headingText.copyWith(
+                                    fontSize: 12.0,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              StatefulBuilder(builder: (context, StateSetter _setState) {
+                bool trekSaved = user.savedTreks.contains(id);
+                return IconButton(
+                  onPressed: () async {
+                    if (trekSaved) {
+                      user.savedTreks.remove(id);
+                      _setState(() {});
+                      await db.updateUser(user.getUserMap());
+                    } else {
+                      user.savedTreks.add(id);
+                      _setState(() {});
+                      await db.updateUser(user.getUserMap());
+                    }
+                  },
+                  icon: Icon(
+                    trekSaved ? Icons.favorite : Icons.favorite_border_sharp,
+                    color: Theme.of(context).accentColor,
+                    size: 32.0,
+                  ),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -20,9 +20,18 @@ class ReviewCard extends StatelessWidget {
           vertical: 5.0,
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            name,
-            style: greyText.copyWith(color: Colors.black87),
+          Row(
+            children: [
+              Text(
+                '$name ',
+                style: greyText.copyWith(color: Colors.black87),
+              ),
+              Icon(
+                Icons.check_circle_rounded,
+                size: 16.0,
+                color: Theme.of(context).accentColor,
+              )
+            ],
           ),
           Text(
             '$reviewStars',

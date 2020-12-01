@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/models/user.dart';
-import 'package:safarnama/services/authentication_service.dart';
+import 'package:safarnama/screens/view_all_screen.dart';
 import 'package:safarnama/services/database_service.dart';
 import 'package:safarnama/widgets/trek_cards.dart';
 
@@ -17,7 +18,9 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   bool search = false;
   final db = DatabaseService();
-
+  final geo = Geoflutterfire();
+  final Timestamp queryDate =
+      Timestamp.fromDate(DateTime.now().add(Duration(days: 90)));
   var queryResultSet = [];
   var tempSearchStore = [];
 
@@ -68,6 +71,13 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+    GeoFirePoint center = geo.point(latitude: 30.3165, longitude: 78.0322);
+    if (user.position != null) {
+      center = geo.point(
+          latitude: user.position.latitude, longitude: user.position.longitude);
+    }
+    double radius = 500.0;
+    String field = 'position';
 
     return Container(
       padding: EdgeInsets.only(left: 20.0),
@@ -75,7 +85,7 @@ class _HomeTabState extends State<HomeTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(top: 20.0, bottom: 20.0, right: 20.0),
+            margin: EdgeInsets.only(top: 20.0, bottom: 28.0, right: 20.0),
             padding: EdgeInsets.only(left: 20.0),
             height: 50.0,
             decoration: BoxDecoration(
@@ -168,22 +178,28 @@ class _HomeTabState extends State<HomeTab> {
                                 style: TextStyle(color: Colors.black))
                           ]),
                     ),
-                    FutureBuilder<QuerySnapshot>(
-                      future: db.treksRef.limit(5).get(),
-                      builder: (context, snapshot) {
+                    StreamBuilder(
+                      stream: geo
+                          .collection(collectionRef: db.treksRef)
+                          .within(center: center, radius: radius, field: field),
+                      builder: (context,
+                          AsyncSnapshot<List<DocumentSnapshot>> snapshots) {
                         // Snap error
-                        if (snapshot.hasError)
-                          return Text('ErrorL ${snapshot.error}');
+                        if (snapshots.hasError)
+                          return Text('ErrorL ${snapshots.error}');
 
                         //Snap connected
-                        if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshots.connectionState ==
+                                ConnectionState.active &&
+                            snapshots.hasData) {
                           return Container(
+                            margin: EdgeInsets.only(top: 8.0),
                             height: 238.0,
                             child: ListView(
                               padding: EdgeInsets.only(bottom: 44.0, top: 12.0),
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
-                              children: snapshot.data.docs.map((trekDoc) {
+                              children: snapshots.data.map((trekDoc) {
                                 Map<String, dynamic> trekData = trekDoc.data();
                                 return TrekCardA(
                                   id: trekDoc.id,
@@ -228,10 +244,17 @@ class _HomeTabState extends State<HomeTab> {
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangeNotifierProvider.value(
+                                                value: user,
+                                                child: ViewAllScreen(
+                                                  view: 'upcoming',
+                                                ),
+                                              )));
                                   //View all treks
-                                  context
-                                      .read<AuthenticationService>()
-                                      .signOut();
                                 },
                                 child: Text(
                                   'View all',
@@ -244,7 +267,10 @@ class _HomeTabState extends State<HomeTab> {
                             height: 12.0,
                           ),
                           FutureBuilder<QuerySnapshot>(
-                            future: db.treksRef.limit(3).get(),
+                            future: db.treksRef
+                                .where('startDate', isLessThan: queryDate)
+                                .limit(3)
+                                .get(),
                             builder: (context, snapshot) {
                               // Snap error
                               if (snapshot.hasError)
@@ -307,6 +333,16 @@ class _HomeTabState extends State<HomeTab> {
                               child: GestureDetector(
                                 onTap: () {
                                   //View all treks
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangeNotifierProvider.value(
+                                                value: user,
+                                                child: ViewAllScreen(
+                                                  view: 'beginner',
+                                                ),
+                                              )));
                                 },
                                 child: Text(
                                   'View all',
@@ -388,6 +424,16 @@ class _HomeTabState extends State<HomeTab> {
                               GestureDetector(
                                 onTap: () {
                                   //View all treks
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangeNotifierProvider.value(
+                                                value: user,
+                                                child: ViewAllScreen(
+                                                  view: 'weekend',
+                                                ),
+                                              )));
                                 },
                                 child: Text(
                                   'View all',

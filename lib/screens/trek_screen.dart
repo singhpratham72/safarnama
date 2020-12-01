@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:safarnama/models/booking.dart';
 import 'package:safarnama/models/user.dart';
 import 'package:safarnama/screens/checkout_screen.dart';
+import 'package:safarnama/screens/map_screen.dart';
 import 'package:safarnama/services/database_service.dart';
 import 'package:safarnama/widgets/add_review.dart';
 import 'package:safarnama/widgets/image_swipe.dart';
@@ -28,6 +29,21 @@ class _TrekScreenState extends State<TrekScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+
+    bool trekDone() {
+      if (user.bookings.isEmpty) {
+        return false;
+      } else {
+        for (Map booking in user.bookings) {
+          DateTime endDate = booking['endDate'].toDate();
+          if (booking['trekID'] == widget.trekID &&
+              endDate.isBefore(DateTime.now())) {
+            return true;
+          }
+        }
+        return false;
+      }
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -63,9 +79,48 @@ class _TrekScreenState extends State<TrekScreen> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 10.0),
-                                child: Text(
-                                  '${trekData['city']}, ${trekData['state']}',
-                                  style: cardText.copyWith(fontSize: 14.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    print('User: ${user.position}');
+                                    print(trekData['position']);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                GoogleMapScreen(
+                                                  trekData: trekData,
+                                                  campPosition:
+                                                      trekData['position']
+                                                          ['geopoint'],
+                                                )));
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '${trekData['city']}, ${trekData['state']}',
+                                            style: cardText.copyWith(
+                                                fontSize: 14.0),
+                                          ),
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            size: 18.0,
+                                            color:
+                                                Theme.of(context).accentColor,
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        'Show on map',
+                                        style: highlightText,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                               Text(
@@ -255,14 +310,23 @@ class _TrekScreenState extends State<TrekScreen> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      showModalBottomSheet(
-                                          context: context,
-                                          isScrollControlled: true,
-                                          builder: (context) => AddReview(
-                                                setState: reviewAdder,
-                                                userName: user.name,
-                                                trekID: widget.trekID,
-                                              ));
+                                      bool hasDoneTrek = trekDone();
+                                      if (hasDoneTrek) {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            isScrollControlled: true,
+                                            builder: (context) => AddReview(
+                                                  setState: reviewAdder,
+                                                  userName: user.name,
+                                                  trekID: widget.trekID,
+                                                ));
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              'You can review this trek only if you have been on it with us.'),
+                                        ));
+                                      }
                                     },
                                     child: Container(
                                       padding: EdgeInsets.symmetric(
@@ -309,6 +373,7 @@ class _TrekScreenState extends State<TrekScreen> {
                                       ConnectionState.done) {
                                     if (!reviewSnap.data.docs.isEmpty)
                                       return ListView(
+                                        physics: NeverScrollableScrollPhysics(),
                                         scrollDirection: Axis.vertical,
                                         shrinkWrap: true,
                                         padding: EdgeInsets.only(

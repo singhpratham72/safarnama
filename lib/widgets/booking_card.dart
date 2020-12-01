@@ -60,7 +60,7 @@ class BookingCard extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   image: NetworkImage(url.data))),
                         ),
-                        Padding(
+                        Container(
                           padding: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 16.0),
                           child: Column(
@@ -76,7 +76,7 @@ class BookingCard extends StatelessWidget {
                                     style: greyText.copyWith(fontSize: 16.0),
                                   ),
                                   SizedBox(
-                                    width: 30.0,
+                                    width: 50.0,
                                   ),
                                   Icon(
                                     Icons.call_made_rounded,

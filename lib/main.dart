@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:safarnama/models/user.dart' as userModel;
-import 'package:safarnama/screens/booking_history_screen.dart';
-import 'package:safarnama/screens/booking_screen.dart';
 import 'package:safarnama/screens/landing_screen.dart';
 import 'package:safarnama/screens/login_screen.dart';
 import 'package:safarnama/screens/signup_screen.dart';

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
 import 'package:safarnama/models/user.dart' as userModel;
@@ -17,10 +18,28 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   int selectedTab = 0;
   PageController _pageController = PageController(initialPage: 0);
+  Position _position;
+  Future<void> getLocation() async {
+    _position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getLocation().whenComplete(() {
+      setState(() {});
+    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   _getLocation();
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<userModel.User>(context);
+    user.updatePosition(_position);
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -128,20 +127,23 @@ class BookingScreen extends StatelessWidget {
 
     i = 1;
 
-    for (Map gear in booking['trekGear']) {
-      c4.add(Text(
-        '$i.',
-        style: TextStyle(fontSize: 20.0, color: Theme.of(context).accentColor),
-      ));
-      i++;
-      c5.add(Text(
-        '${gear['name']}',
-        style: TextStyle(fontSize: 20.0),
-      ));
-      c6.add(Text(
-        '${gear['size']}',
-        style: TextStyle(fontSize: 20.0),
-      ));
+    if (booking['trekGear'] != null) {
+      for (Map gear in booking['trekGear']) {
+        c4.add(Text(
+          '$i.',
+          style:
+              TextStyle(fontSize: 20.0, color: Theme.of(context).accentColor),
+        ));
+        i++;
+        c5.add(Text(
+          '${gear['name']}',
+          style: TextStyle(fontSize: 20.0),
+        ));
+        c6.add(Text(
+          '${gear['size']}',
+          style: TextStyle(fontSize: 20.0),
+        ));
+      }
     }
 
     return Scaffold(
@@ -261,7 +263,7 @@ class BookingScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              booking['trekGear'].isNotEmpty
+                              booking['trekGear'] != null
                                   ? Row(
                                       children: [
                                         Column(

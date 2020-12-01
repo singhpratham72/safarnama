@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:safarnama/services/database_service.dart';
 
 class User with ChangeNotifier {
@@ -6,7 +7,14 @@ class User with ChangeNotifier {
 
   String name, phone, email;
   List savedTreks, bookings;
-  User({this.name, this.phone, this.email, this.bookings, this.savedTreks});
+  Position position;
+  User(
+      {this.name,
+      this.phone,
+      this.email,
+      this.bookings,
+      this.savedTreks,
+      this.position});
 
   factory User.fromMap(Map data) {
     return User(
@@ -15,6 +23,10 @@ class User with ChangeNotifier {
         email: data['email'],
         bookings: data['bookings'],
         savedTreks: data['savedTreks']);
+  }
+
+  void updatePosition(Position newPosition) {
+    position = newPosition;
   }
 
   void cancelBooking(Map booking) {
