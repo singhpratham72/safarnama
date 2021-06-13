@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Text(error),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text(
                   "Close",
                   style: TextStyle(color: Theme.of(context).accentColor),

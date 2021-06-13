@@ -103,7 +103,6 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
       }
     });
 
-    // TODO: implement initState
     super.initState();
   }
 

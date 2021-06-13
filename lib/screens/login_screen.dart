@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(error),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text(
                   "Close",
                   style: TextStyle(color: Theme.of(context).accentColor),

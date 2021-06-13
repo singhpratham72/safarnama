@@ -26,7 +26,6 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getLocation().whenComplete(() {
       setState(() {});
