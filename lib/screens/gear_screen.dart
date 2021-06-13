@@ -495,10 +495,7 @@ class _GearScreenState extends State<GearScreen> {
                                                                           ? Container(
                                                                               height: 26.0,
                                                                               width: 26.0,
-                                                                              child: CircularProgressIndicator(
-                                                                                strokeWidth: 3.0,
-                                                                                backgroundColor: Colors.white,
-                                                                              ),
+                                                                              child: CircularProgressIndicator(strokeWidth: 3.0, backgroundColor: Colors.white, color: Theme.of(context).accentColor),
                                                                             )
                                                                           : Text(
                                                                               "Checkout",
@@ -543,7 +540,8 @@ class _GearScreenState extends State<GearScreen> {
               }
               //Loading
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                    color: Theme.of(context).accentColor),
               );
             },
           ),

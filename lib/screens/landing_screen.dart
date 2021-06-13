@@ -222,7 +222,7 @@ class _LandingScreenState extends State<LandingScreen> {
               });
             },
             type: BottomNavigationBarType.fixed,
-            iconSize: 40.0,
+            iconSize: 36.0,
             showSelectedLabels: false,
             showUnselectedLabels: false,
             selectedItemColor: Theme.of(context).accentColor,
@@ -231,12 +231,12 @@ class _LandingScreenState extends State<LandingScreen> {
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home_outlined,
-                    size: 46.0,
+                    size: 40.0,
                   ),
                   label: 'Home',
                   activeIcon: Icon(
                     Icons.home,
-                    size: 46.0,
+                    size: 40.0,
                   )),
               BottomNavigationBarItem(
                   icon: Icon(Icons.favorite_border_outlined),
@@ -249,12 +249,12 @@ class _LandingScreenState extends State<LandingScreen> {
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.person_outline,
-                    size: 46.0,
+                    size: 40.0,
                   ),
                   label: 'User',
                   activeIcon: Icon(
                     Icons.person,
-                    size: 46.0,
+                    size: 40.0,
                   )),
             ],
           ),

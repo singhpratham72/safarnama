@@ -399,7 +399,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                       );
                                   }
                                   return Container(
-                                    child: CircularProgressIndicator(),
+                                    child: CircularProgressIndicator(
+                                      color: Theme.of(context).accentColor
+                                    ),
                                   );
                                 },
                               )
@@ -542,7 +544,9 @@ class _TrekScreenState extends State<TrekScreen> {
               }
               //Loading
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).accentColor
+                ),
               );
             },
           ),

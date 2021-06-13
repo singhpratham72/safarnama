@@ -203,7 +203,9 @@ class _RentTabState extends State<RentTab> {
                               return Padding(
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Theme.of(context).accentColor
+                                  ),
                                 ),
                               );
                             },
@@ -259,7 +261,9 @@ class _RentTabState extends State<RentTab> {
                               return Padding(
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Theme.of(context).accentColor
+                                  ),
                                 ),
                               );
                             },
@@ -315,7 +319,9 @@ class _RentTabState extends State<RentTab> {
                               return Padding(
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Theme.of(context).accentColor
+                                  ),
                                 ),
                               );
                             },
@@ -371,7 +377,9 @@ class _RentTabState extends State<RentTab> {
                               return Padding(
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Theme.of(context).accentColor
+                                  ),
                                 ),
                               );
                             },
@@ -427,7 +435,9 @@ class _RentTabState extends State<RentTab> {
                               return Padding(
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
-                                  child: CircularProgressIndicator(),
+                                  child: CircularProgressIndicator(
+                                    color: Theme.of(context).accentColor
+                                  ),
                                 ),
                               );
                             },

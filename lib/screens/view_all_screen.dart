@@ -111,7 +111,9 @@ class ViewAllScreen extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.all(48.0),
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: CircularProgressIndicator(
+                            color: Theme.of(context).accentColor
+                          ),
                         ),
                       );
                     },

@@ -73,25 +73,25 @@ class BookingCard extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Booking ID: ${booking['bookingID']}',
-                                    style: greyText.copyWith(fontSize: 16.0),
+                                    style: greyText.copyWith(fontSize: 12.0),
                                   ),
                                   SizedBox(
                                     width: 50.0,
                                   ),
                                   Icon(
                                     Icons.call_made_rounded,
-                                    size: 22.0,
+                                    size: 18.0,
                                     color: Theme.of(context).accentColor,
                                   )
                                 ],
                               ),
                               Text(
                                 booking['trekName'],
-                                style: headingText.copyWith(fontSize: 20.0),
+                                style: headingText.copyWith(fontSize: 14.0),
                               ),
                               Text(
                                 '₹${booking['price']}.0',
-                                style: highlightText.copyWith(fontSize: 18.0),
+                                style: highlightText.copyWith(fontSize: 12.0),
                               ),
                               Row(
                                 children: [
@@ -100,7 +100,7 @@ class BookingCard extends StatelessWidget {
                                       Icon(
                                         Icons.calendar_today_outlined,
                                         color: Theme.of(context).accentColor,
-                                        size: 22.0,
+                                        size: 18.0,
                                       ),
                                       SizedBox(
                                         width: 4.0,
@@ -108,7 +108,7 @@ class BookingCard extends StatelessWidget {
                                       Text(
                                         '${dateFormat.format(booking['startDate'].toDate())}',
                                         style: headingText.copyWith(
-                                          fontSize: 18.0,
+                                          fontSize: 12.0,
                                         ),
                                       )
                                     ],
@@ -121,7 +121,7 @@ class BookingCard extends StatelessWidget {
                                       Icon(
                                         Icons.people,
                                         color: Theme.of(context).accentColor,
-                                        size: 28.0,
+                                        size: 24.0,
                                       ),
                                       SizedBox(
                                         width: 4.0,
@@ -129,7 +129,7 @@ class BookingCard extends StatelessWidget {
                                       Text(
                                         '${booking['people'].length}',
                                         style: headingText.copyWith(
-                                          fontSize: 18.0,
+                                          fontSize: 12.0,
                                         ),
                                       )
                                     ],

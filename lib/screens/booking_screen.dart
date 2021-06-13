@@ -94,16 +94,16 @@ class BookingScreen extends StatelessWidget {
     for (Map person in booking['people']) {
       c1.add(Text(
         '$i.',
-        style: TextStyle(fontSize: 20.0, color: Theme.of(context).accentColor),
+        style: TextStyle(fontSize: 14.0, color: Theme.of(context).accentColor),
       ));
       i++;
       c2.add(Text(
         '${person['name']}',
-        style: TextStyle(fontSize: 20.0),
+        style: TextStyle(fontSize: 14.0),
       ));
       c3.add(Text(
         '${person['age']}',
-        style: TextStyle(fontSize: 20.0),
+        style: TextStyle(fontSize: 14.0),
       ));
     }
     List<Widget> c4 = [
@@ -132,16 +132,16 @@ class BookingScreen extends StatelessWidget {
         c4.add(Text(
           '$i.',
           style:
-              TextStyle(fontSize: 20.0, color: Theme.of(context).accentColor),
+              TextStyle(fontSize: 14.0, color: Theme.of(context).accentColor),
         ));
         i++;
         c5.add(Text(
           '${gear['name']}',
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 14.0),
         ));
         c6.add(Text(
           '${gear['size']}',
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 14.0),
         ));
       }
     }
@@ -179,13 +179,13 @@ class BookingScreen extends StatelessWidget {
                         Text(
                           booking['trekName'],
                           style: cardText.copyWith(
-                              fontSize: 24.0,
+                              fontSize: 20.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
                         Text('$startDate to $endDate',
                             style: TextStyle(
-                                fontSize: 18.0,
+                                fontSize: 16.0,
                                 color: Theme.of(context).accentColor)),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -194,11 +194,11 @@ class BookingScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'Booking ID',
-                                style: cardText.copyWith(fontSize: 20.0),
+                                style: cardText.copyWith(fontSize: 16.0),
                               ),
                               Text(
                                 '${booking['bookingID']}',
-                                style: greyText.copyWith(fontSize: 20.0),
+                                style: greyText.copyWith(fontSize: 16.0),
                               ),
                             ],
                           ),
@@ -212,7 +212,7 @@ class BookingScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Trekkers ',
-                                    style: cardText.copyWith(fontSize: 20.0),
+                                    style: cardText.copyWith(fontSize: 16.0),
                                   ),
                                   Icon(
                                     Icons.people,
@@ -254,7 +254,7 @@ class BookingScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Gear Rentals ',
-                                    style: cardText.copyWith(fontSize: 20.0),
+                                    style: cardText.copyWith(fontSize: 16.0),
                                   ),
                                   Icon(
                                     FontAwesomeIcons.hiking,
@@ -305,7 +305,7 @@ class BookingScreen extends StatelessWidget {
                             Text(
                               '₹${booking['price']}.0',
                               style: cardText.copyWith(
-                                  fontSize: 24.0,
+                                  fontSize: 22.0,
                                   fontWeight: FontWeight.bold,
                                   color: Theme.of(context).accentColor),
                             ),

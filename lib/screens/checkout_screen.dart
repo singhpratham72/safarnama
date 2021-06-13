@@ -314,6 +314,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                           cursorColor: Theme.of(context).accentColor,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).disabledColor),
                             labelText: "Trekker 1",
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -369,6 +371,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                           cursorColor: Theme.of(context).accentColor,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).disabledColor),
                             labelText: "Trekker 2",
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -424,6 +428,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                           cursorColor: Theme.of(context).accentColor,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).disabledColor),
                             labelText: "Trekker 3",
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -576,24 +582,24 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                           children: [
                             Text(
                               'Trek Name',
-                              style: greyText.copyWith(fontSize: 18.0),
+                              style: greyText.copyWith(fontSize: 12.0),
                             ),
                             Text(
                               '${widget.trekData['name']}',
                               style: headingText.copyWith(
-                                  fontSize: 22.0, color: Colors.black87),
+                                  fontSize: 16.0, color: Colors.black87),
                             ),
                             SizedBox(
                               height: 24.0,
                             ),
                             Text(
                               'Price (per person)',
-                              style: greyText.copyWith(fontSize: 18.0),
+                              style: greyText.copyWith(fontSize: 12.0),
                             ),
                             Text(
                               '₹${widget.trekData['price']}/-',
                               style: headingText.copyWith(
-                                  fontSize: 22.0, color: Colors.black87),
+                                  fontSize: 16.0, color: Colors.black87),
                             )
                           ],
                         ),
@@ -605,24 +611,24 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                           children: [
                             Text(
                               'Location',
-                              style: greyText.copyWith(fontSize: 18.0),
+                              style: greyText.copyWith(fontSize: 12.0),
                             ),
                             Text(
                               '${widget.trekData['city']}',
                               style: headingText.copyWith(
-                                  fontSize: 22.0, color: Colors.black87),
+                                  fontSize: 16.0, color: Colors.black87),
                             ),
                             SizedBox(
                               height: 24.0,
                             ),
                             Text(
                               'Trekkers',
-                              style: greyText.copyWith(fontSize: 18.0),
+                              style: greyText.copyWith(fontSize: 12.0),
                             ),
                             Text(
                               '${booking.people.length}',
                               style: headingText.copyWith(
-                                  fontSize: 22.0, color: Colors.black87),
+                                  fontSize: 16.0, color: Colors.black87),
                             )
                           ],
                         )
@@ -718,9 +724,9 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                               height: 26.0,
                               width: 26.0,
                               child: CircularProgressIndicator(
-                                strokeWidth: 3.0,
-                                backgroundColor: Colors.white,
-                              ),
+                                  strokeWidth: 3.0,
+                                  backgroundColor: Colors.white,
+                                  color: Theme.of(context).accentColor),
                             )
                           : Text(
                               "Checkout",
