@@ -90,154 +90,161 @@ class _LoginScreenState extends State<LoginScreen> {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 132.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                    text: 'Welcome,\n',
-                    style: GoogleFonts.roboto(
-                      color: Colors.black,
-                      fontSize: 54.0,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 132.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                      text: 'Welcome,\n',
+                      style: GoogleFonts.roboto(
+                        color: Colors.black,
+                        fontSize: 54.0,
+                      ),
+                      children: [
+                        TextSpan(
+                            text: 'sign-in.',
+                            style:
+                                TextStyle(color: Theme.of(context).accentColor))
+                      ]),
+                ),
+                SizedBox(
+                  height: 88.0,
+                ),
+                TextField(
+                  autocorrect: false,
+                  controller: _emailController,
+                  cursorColor: Theme.of(context).accentColor,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).disabledColor),
+                    labelText: "E-mail",
+                    filled: true,
+                    fillColor: Theme.of(context).dialogBackgroundColor,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).accentColor,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                TextField(
+                  autocorrect: false,
+                  controller: _passwordController,
+                  obscureText: true,
+                  cursorColor: Theme.of(context).accentColor,
+                  decoration: InputDecoration(
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).disabledColor),
+                    labelText: "Password",
+                    filled: true,
+                    fillColor: Theme.of(context).dialogBackgroundColor,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).accentColor,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
                     children: [
-                      TextSpan(
-                          text: 'sign-in.',
-                          style:
-                              TextStyle(color: Theme.of(context).accentColor))
-                    ]),
-              ),
-              SizedBox(
-                height: 88.0,
-              ),
-              TextField(
-                autocorrect: false,
-                controller: _emailController,
-                cursorColor: Theme.of(context).accentColor,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: "E-mail",
-                  filled: true,
-                  fillColor: Theme.of(context).dialogBackgroundColor,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Theme.of(context).accentColor,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextField(
-                autocorrect: false,
-                controller: _passwordController,
-                obscureText: true,
-                cursorColor: Theme.of(context).accentColor,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  filled: true,
-                  fillColor: Theme.of(context).dialogBackgroundColor,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Theme.of(context).accentColor,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        _submitForm();
-                      },
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 16.0),
-                        alignment: Alignment.center,
-                        height: 48.0,
-                        width: MediaQuery.of(context).size.width / 1.6,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.0),
-                          color: Theme.of(context).accentColor,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 96.0, vertical: 12.0),
-                        child: _loginFormLoading
-                            ? Container(
-                                height: 26.0,
-                                width: 26.0,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 3.0,
-                                  backgroundColor: Colors.white,
-                                ),
-                              )
-                            : Text(
-                                "Login",
-                                style: buttonText,
-                              ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 54.0),
-                      child: GestureDetector(
-                        onTap: () async {
-                          _googleSignIn();
+                      GestureDetector(
+                        onTap: () {
+                          _submitForm();
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Or sign-in with ',
-                              style: greyText.copyWith(fontSize: 18.0),
-                            ),
-                            Icon(
-                              FontAwesomeIcons.google,
-                              color: Theme.of(context).accentColor,
-                            ),
-                          ],
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 16.0),
+                          alignment: Alignment.center,
+                          height: 48.0,
+                          width: MediaQuery.of(context).size.width / 1.6,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Theme.of(context).accentColor,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 72.0, vertical: 12.0),
+                          child: _loginFormLoading
+                              ? Container(
+                                  height: 26.0,
+                                  width: 26.0,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3.0,
+                                    backgroundColor: Colors.white,
+                                    color: Theme.of(context).accentColor,
+                                  ),
+                                )
+                              : Text(
+                                  "Login",
+                                  style: buttonText,
+                                ),
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/signup');
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                            text: 'Don\'t have an account? ',
-                            style: greyText,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 54.0),
+                        child: GestureDetector(
+                          onTap: () async {
+                            _googleSignIn();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TextSpan(
-                                  text: 'Sign up.',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Theme.of(context).accentColor))
-                            ]),
+                              Text(
+                                'Or sign-in with ',
+                                style: greyText.copyWith(fontSize: 18.0),
+                              ),
+                              Icon(
+                                FontAwesomeIcons.google,
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/signup');
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'Don\'t have an account? ',
+                              style: greyText,
+                              children: [
+                                TextSpan(
+                                    text: 'Sign up.',
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Theme.of(context).accentColor))
+                              ]),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

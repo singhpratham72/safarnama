@@ -78,179 +78,187 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RichText(
-              text: TextSpan(
-                  text: 'Create your\n',
-                  style: GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontSize: 54.0,
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 72.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: TextSpan(
+                    text: 'Create your\n',
+                    style: GoogleFonts.roboto(
+                      color: Colors.black,
+                      fontSize: 54.0,
+                    ),
+                    children: [
+                      TextSpan(
+                          text: 'account.',
+                          style:
+                              TextStyle(color: Theme.of(context).accentColor))
+                    ]),
+              ),
+              SizedBox(
+                height: 54.0,
+              ),
+              TextField(
+                controller: _nameController,
+                keyboardType: TextInputType.name,
+                cursorColor: Theme.of(context).accentColor,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: Theme.of(context).disabledColor),
+                  labelText: "Name",
+                  filled: true,
+                  fillColor: Theme.of(context).dialogBackgroundColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              TextField(
+                controller: _phoneController,
+                keyboardType: TextInputType.phone,
+                cursorColor: Theme.of(context).accentColor,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: Theme.of(context).disabledColor),
+                  labelText: "Phone",
+                  filled: true,
+                  fillColor: Theme.of(context).dialogBackgroundColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                cursorColor: Theme.of(context).accentColor,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: Theme.of(context).disabledColor),
+                  labelText: "E-mail",
+                  filled: true,
+                  fillColor: Theme.of(context).dialogBackgroundColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                cursorColor: Theme.of(context).accentColor,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: Theme.of(context).disabledColor),
+                  labelText: "Password",
+                  filled: true,
+                  fillColor: Theme.of(context).dialogBackgroundColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).accentColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
                   children: [
-                    TextSpan(
-                        text: 'account.',
-                        style: TextStyle(color: Theme.of(context).accentColor))
-                  ]),
-            ),
-            SizedBox(
-              height: 54.0,
-            ),
-            TextField(
-              controller: _nameController,
-              keyboardType: TextInputType.name,
-              cursorColor: Theme.of(context).accentColor,
-              decoration: InputDecoration(
-                labelText: "Name",
-                filled: true,
-                fillColor: Theme.of(context).dialogBackgroundColor,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            TextField(
-              controller: _phoneController,
-              keyboardType: TextInputType.phone,
-              cursorColor: Theme.of(context).accentColor,
-              decoration: InputDecoration(
-                labelText: "Phone",
-                filled: true,
-                fillColor: Theme.of(context).dialogBackgroundColor,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            TextField(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              cursorColor: Theme.of(context).accentColor,
-              decoration: InputDecoration(
-                labelText: "E-mail",
-                filled: true,
-                fillColor: Theme.of(context).dialogBackgroundColor,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              cursorColor: Theme.of(context).accentColor,
-              decoration: InputDecoration(
-                labelText: "Password",
-                filled: true,
-                fillColor: Theme.of(context).dialogBackgroundColor,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      _submitForm();
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 16.0),
-                      alignment: Alignment.center,
-                      height: 48.0,
-                      width: MediaQuery.of(context).size.width / 1.6,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        color: Theme.of(context).accentColor,
-                      ),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 96.0, vertical: 12.0),
-                      child: _signUpFormLoading
-                          ? Container(
-                              height: 26.0,
-                              width: 26.0,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3.0,
-                                backgroundColor: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        _submitForm();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 16.0),
+                        alignment: Alignment.center,
+                        height: 48.0,
+                        width: MediaQuery.of(context).size.width / 1.6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.0),
+                          color: Theme.of(context).accentColor,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 72.0, vertical: 12.0),
+                        child: _signUpFormLoading
+                            ? Container(
+                                height: 26.0,
+                                width: 26.0,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3.0,
+                                  backgroundColor: Colors.white,
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              )
+                            : Text(
+                                "Sign Up",
+                                style: buttonText,
                               ),
-                            )
-                          : Text(
-                              "Sign Up",
-                              style: buttonText,
-                            ),
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: RichText(
-                      text: TextSpan(
-                          text: 'Already have an account? ',
-                          style: greyText,
-                          children: [
-                            TextSpan(
-                                text: 'Log in.',
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Theme.of(context).accentColor))
-                          ]),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'Already have an account? ',
+                            style: greyText,
+                            children: [
+                              TextSpan(
+                                  text: 'Log in.',
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Theme.of(context).accentColor))
+                            ]),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

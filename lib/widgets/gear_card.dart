@@ -61,7 +61,7 @@ class GearCard extends StatelessWidget {
                 height: 120.0,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
                 color: Colors.white,
                 height: 62.0,
                 child: Column(

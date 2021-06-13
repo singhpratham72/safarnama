@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           accentColor: Color(0xFF06BEBE),
           primaryColor: Color(0xFF06BEBE),
+          highlightColor: Color(0xFF06BEBE),
           dialogBackgroundColor: Color(0xFFEFEEEE),
           disabledColor: Color(0xFFC1C1C1),
           textTheme: GoogleFonts.openSansTextTheme(Theme.of(context).textTheme),
