@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
               TextButton(
                 child: Text(
                   "Close",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.secondary),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -107,8 +107,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         TextSpan(
                             text: 'sign-in.',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor))
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary))
                       ]),
                 ),
                 SizedBox(
@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   autocorrect: false,
                   controller: _emailController,
-                  cursorColor: Theme.of(context).accentColor,
+                  cursorColor: Theme.of(context).colorScheme.secondary,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelStyle:
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   autocorrect: false,
                   controller: _passwordController,
                   obscureText: true,
-                  cursorColor: Theme.of(context).accentColor,
+                  cursorColor: Theme.of(context).colorScheme.secondary,
                   decoration: InputDecoration(
                     labelStyle:
                         TextStyle(color: Theme.of(context).disabledColor),
@@ -161,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: MediaQuery.of(context).size.width / 1.6,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.0),
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                           padding: EdgeInsets.symmetric(
                               horizontal: 72.0, vertical: 12.0),
@@ -193,7 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: CircularProgressIndicator(
                                     strokeWidth: 3.0,
                                     backgroundColor: Colors.white,
-                                    color: Theme.of(context).accentColor,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 )
                               : Text(
@@ -217,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               Icon(
                                 FontAwesomeIcons.google,
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                             ],
                           ),
@@ -236,7 +237,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     text: 'Sign up.',
                                     style: TextStyle(
                                         decoration: TextDecoration.underline,
-                                        color: Theme.of(context).accentColor))
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary))
                               ]),
                         ),
                       ),

@@ -47,7 +47,7 @@ class AddReview extends StatelessWidget {
                       text: TextSpan(
                           text: 'Rate ',
                           style: headingText.copyWith(
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                               fontSize: 24.0),
                           children: [
                             TextSpan(
@@ -87,7 +87,7 @@ class AddReview extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     child: Text(
                       'Submit',
@@ -110,7 +110,7 @@ class EditReviewContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5.0, right: 35.0),
       child: TextField(
-        cursorColor: Theme.of(context).accentColor,
+        cursorColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           focusColor: Colors.grey,
           border: OutlineInputBorder(),
@@ -152,7 +152,7 @@ class _ReviewRatingState extends State<ReviewRating> {
               height: 42.0,
               decoration: BoxDecoration(
                 color: _selected == i
-                    ? Theme.of(context).accentColor
+                    ? Theme.of(context).colorScheme.secondary
                     : Color(0xFFDCDCDC),
                 borderRadius: BorderRadius.circular(8.0),
               ),

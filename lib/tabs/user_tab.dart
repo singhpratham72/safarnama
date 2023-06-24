@@ -27,7 +27,7 @@ class UserTab extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 2.5,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.elliptical(
                           (MediaQuery.of(context).size.width / 2), 75.0),
@@ -177,7 +177,7 @@ class UserTab extends StatelessWidget {
                               style: headingText,
                             ),
                             Icon(FontAwesomeIcons.google,
-                                color: Theme.of(context).accentColor),
+                                color: Theme.of(context).colorScheme.secondary),
                           ],
                         ),
                       ),
@@ -195,7 +195,7 @@ class UserTab extends StatelessWidget {
                         child: Text(
                           "Sign out",
                           style: headingText.copyWith(
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                       ),
                     )

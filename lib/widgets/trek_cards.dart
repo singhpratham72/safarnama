@@ -179,7 +179,7 @@ class TrekCardB extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.signal_cellular_alt,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,7 +207,7 @@ class TrekCardB extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.timer,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,7 +250,7 @@ class TrekCardB extends StatelessWidget {
                 alignment: Alignment.center,
                 width: 46.0,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 ),
                 child: Transform.rotate(
@@ -360,7 +360,7 @@ class TrekCardC extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.signal_cellular_alt,
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -388,7 +388,7 @@ class TrekCardC extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.timer,
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -422,7 +422,7 @@ class TrekCardC extends StatelessWidget {
                 icon: Icon(
                   Icons.delete_sharp,
                   size: 32.0,
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               )
             ],
@@ -523,7 +523,7 @@ class TrekCardD extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.signal_cellular_alt,
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -551,7 +551,7 @@ class TrekCardD extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.timer,
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -593,7 +593,7 @@ class TrekCardD extends StatelessWidget {
                   },
                   icon: Icon(
                     trekSaved ? Icons.favorite : Icons.favorite_border_sharp,
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                     size: 32.0,
                   ),
                 );

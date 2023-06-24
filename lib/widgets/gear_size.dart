@@ -33,7 +33,7 @@ class _GearSizeState extends State<GearSize> {
                 height: 42.0,
                 decoration: BoxDecoration(
                   color: _selected == i
-                      ? Theme.of(context).accentColor
+                      ? Theme.of(context).colorScheme.secondary
                       : Color(0xFFDCDCDC),
                   borderRadius: BorderRadius.circular(8.0),
                 ),

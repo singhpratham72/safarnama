@@ -93,7 +93,7 @@ class _RentTabState extends State<RentTab> {
                     onChanged: (text) {
                       initiateSearch(text);
                     },
-                    cursorColor: Theme.of(context).accentColor,
+                    cursorColor: Theme.of(context).colorScheme.secondary,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Search for trekking gear',
@@ -163,7 +163,7 @@ class _RentTabState extends State<RentTab> {
                           Text(
                             'Backpacks',
                             style: headingText.copyWith(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
                           FutureBuilder<QuerySnapshot>(
@@ -204,8 +204,9 @@ class _RentTabState extends State<RentTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },
@@ -221,7 +222,7 @@ class _RentTabState extends State<RentTab> {
                           Text(
                             'Jackets',
                             style: headingText.copyWith(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
                           FutureBuilder<QuerySnapshot>(
@@ -262,8 +263,9 @@ class _RentTabState extends State<RentTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },
@@ -279,7 +281,7 @@ class _RentTabState extends State<RentTab> {
                           Text(
                             'Trekking Poles',
                             style: headingText.copyWith(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
                           FutureBuilder<QuerySnapshot>(
@@ -320,8 +322,9 @@ class _RentTabState extends State<RentTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },
@@ -337,7 +340,7 @@ class _RentTabState extends State<RentTab> {
                           Text(
                             'Trekking Shoes',
                             style: headingText.copyWith(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
                           FutureBuilder<QuerySnapshot>(
@@ -378,8 +381,9 @@ class _RentTabState extends State<RentTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },
@@ -395,7 +399,7 @@ class _RentTabState extends State<RentTab> {
                           Text(
                             'Ponchos',
                             style: headingText.copyWith(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
                           FutureBuilder<QuerySnapshot>(
@@ -436,8 +440,9 @@ class _RentTabState extends State<RentTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },

@@ -81,7 +81,8 @@ class BookingCard extends StatelessWidget {
                                   Icon(
                                     Icons.call_made_rounded,
                                     size: 18.0,
-                                    color: Theme.of(context).accentColor,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   )
                                 ],
                               ),
@@ -99,7 +100,9 @@ class BookingCard extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.calendar_today_outlined,
-                                        color: Theme.of(context).accentColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                         size: 18.0,
                                       ),
                                       SizedBox(
@@ -120,7 +123,9 @@ class BookingCard extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.people,
-                                        color: Theme.of(context).accentColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                         size: 24.0,
                                       ),
                                       SizedBox(

@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 30.0),
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             CircularProgressIndicator(
               backgroundColor: Colors.white,
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ],
         )),

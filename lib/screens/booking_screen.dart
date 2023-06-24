@@ -27,7 +27,7 @@ class BookingScreen extends StatelessWidget {
           return AlertDialog(
             title: Text(
               'Trek Cancellation',
-              style: TextStyle(color: Theme.of(context).accentColor),
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
             ),
             content: SingleChildScrollView(
               child: ListBody(
@@ -51,8 +51,8 @@ class BookingScreen extends StatelessWidget {
               TextButton(
                 child: Text(
                   'Confirm',
-                  style:
-                      greyText.copyWith(color: Theme.of(context).accentColor),
+                  style: greyText.copyWith(
+                      color: Theme.of(context).colorScheme.secondary),
                 ),
                 onPressed: () async {
                   user.cancelBooking(booking);
@@ -94,7 +94,8 @@ class BookingScreen extends StatelessWidget {
     for (Map person in booking['people']) {
       c1.add(Text(
         '$i.',
-        style: TextStyle(fontSize: 14.0, color: Theme.of(context).accentColor),
+        style: TextStyle(
+            fontSize: 14.0, color: Theme.of(context).colorScheme.secondary),
       ));
       i++;
       c2.add(Text(
@@ -131,8 +132,8 @@ class BookingScreen extends StatelessWidget {
       for (Map gear in booking['trekGear']) {
         c4.add(Text(
           '$i.',
-          style:
-              TextStyle(fontSize: 14.0, color: Theme.of(context).accentColor),
+          style: TextStyle(
+              fontSize: 14.0, color: Theme.of(context).colorScheme.secondary),
         ));
         i++;
         c5.add(Text(
@@ -186,7 +187,8 @@ class BookingScreen extends StatelessWidget {
                         Text('$startDate to $endDate',
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: Theme.of(context).accentColor)),
+                                color:
+                                    Theme.of(context).colorScheme.secondary)),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: Column(
@@ -216,7 +218,8 @@ class BookingScreen extends StatelessWidget {
                                   ),
                                   Icon(
                                     Icons.people,
-                                    color: Theme.of(context).accentColor,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 28.0,
                                   ),
                                 ],
@@ -257,8 +260,9 @@ class BookingScreen extends StatelessWidget {
                                     style: cardText.copyWith(fontSize: 16.0),
                                   ),
                                   Icon(
-                                    FontAwesomeIcons.hiking,
-                                    color: Theme.of(context).accentColor,
+                                    FontAwesomeIcons.personHiking,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                     size: 24.0,
                                   ),
                                 ],
@@ -307,7 +311,8 @@ class BookingScreen extends StatelessWidget {
                               style: cardText.copyWith(
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).accentColor),
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
                             ),
                           ],
                         ),
@@ -338,7 +343,7 @@ class BookingScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.0),
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     padding: EdgeInsets.symmetric(vertical: 12.0),
                     child: Text(
@@ -359,7 +364,7 @@ class BookingScreen extends StatelessWidget {
               width: 28.0,
               height: 28.0,
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 boxShadow: [
                   BoxShadow(

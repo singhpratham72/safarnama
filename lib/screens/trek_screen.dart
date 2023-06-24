@@ -110,8 +110,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                           Icon(
                                             Icons.location_on_outlined,
                                             size: 18.0,
-                                            color:
-                                                Theme.of(context).accentColor,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
                                           ),
                                         ],
                                       ),
@@ -205,7 +206,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                       children: [
                                         Icon(
                                           Icons.signal_cellular_alt,
-                                          color: Theme.of(context).accentColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           size: 28.0,
                                         ),
                                         SizedBox(
@@ -238,7 +241,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                       children: [
                                         Icon(
                                           Icons.timer,
-                                          color: Theme.of(context).accentColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           size: 28.0,
                                         ),
                                         SizedBox(
@@ -271,7 +276,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                       children: [
                                         Icon(
                                           Icons.height,
-                                          color: Theme.of(context).accentColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           size: 28.0,
                                         ),
                                         SizedBox(
@@ -332,12 +339,15 @@ class _TrekScreenState extends State<TrekScreen> {
                                       padding: EdgeInsets.symmetric(
                                           vertical: 2.0, horizontal: 6.0),
                                       decoration: BoxDecoration(
-                                          color: Theme.of(context).accentColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           border: Border.all(
                                               color: Theme.of(context)
-                                                  .accentColor)),
+                                                  .colorScheme
+                                                  .secondary)),
                                       child: Row(
                                         children: [
                                           Text(
@@ -400,8 +410,9 @@ class _TrekScreenState extends State<TrekScreen> {
                                   }
                                   return Container(
                                     child: CircularProgressIndicator(
-                                      color: Theme.of(context).accentColor
-                                    ),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
                                   );
                                 },
                               )
@@ -463,7 +474,8 @@ class _TrekScreenState extends State<TrekScreen> {
                                   trekSaved
                                       ? Icons.favorite
                                       : Icons.favorite_border_outlined,
-                                  color: Theme.of(context).accentColor,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                   size: 32.0,
                                 ),
                               ),
@@ -514,7 +526,7 @@ class _TrekScreenState extends State<TrekScreen> {
                               width: MediaQuery.of(context).size.width / 1.5,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               padding: EdgeInsets.symmetric(vertical: 12.0),
                               child: Row(
@@ -545,8 +557,7 @@ class _TrekScreenState extends State<TrekScreen> {
               //Loading
               return Center(
                 child: CircularProgressIndicator(
-                  color: Theme.of(context).accentColor
-                ),
+                    color: Theme.of(context).colorScheme.secondary),
               );
             },
           ),

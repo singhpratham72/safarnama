@@ -48,7 +48,7 @@ class ViewAllScreen extends StatelessWidget {
                     width: 28.0,
                     height: 28.0,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       boxShadow: [
                         BoxShadow(
@@ -72,8 +72,8 @@ class ViewAllScreen extends StatelessWidget {
                       children: [
                         TextSpan(
                             text: ' treks',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor))
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary))
                       ]),
                 ),
               ],
@@ -112,8 +112,7 @@ class ViewAllScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(48.0),
                         child: Center(
                           child: CircularProgressIndicator(
-                            color: Theme.of(context).accentColor
-                          ),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                       );
                     },

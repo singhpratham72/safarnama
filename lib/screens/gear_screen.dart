@@ -222,7 +222,8 @@ class _GearScreenState extends State<GearScreen> {
                                                           fontSize: 14.0,
                                                           color:
                                                               Theme.of(context)
-                                                                  .accentColor),
+                                                                  .colorScheme
+                                                                  .secondary),
                                                     ),
                                                   ],
                                                 ),
@@ -293,7 +294,8 @@ class _GearScreenState extends State<GearScreen> {
                                                                   .copyWith(
                                                                       color: Theme.of(
                                                                               context)
-                                                                          .accentColor,
+                                                                          .colorScheme
+                                                                          .secondary,
                                                                       fontSize: 24.0),
                                                               children: [
                                                                 TextSpan(
@@ -364,7 +366,7 @@ class _GearScreenState extends State<GearScreen> {
                                                                           text:
                                                                               '₹${gearData['price']}.0',
                                                                           style:
-                                                                              TextStyle(color: Theme.of(context).accentColor))
+                                                                              TextStyle(color: Theme.of(context).colorScheme.secondary))
                                                                     ]),
                                                               ),
                                                             ),
@@ -486,7 +488,8 @@ class _GearScreenState extends State<GearScreen> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(12.0),
                                                                         color: Theme.of(context)
-                                                                            .accentColor,
+                                                                            .colorScheme
+                                                                            .secondary,
                                                                       ),
                                                                       padding: EdgeInsets.symmetric(
                                                                           vertical:
@@ -495,7 +498,7 @@ class _GearScreenState extends State<GearScreen> {
                                                                           ? Container(
                                                                               height: 26.0,
                                                                               width: 26.0,
-                                                                              child: CircularProgressIndicator(strokeWidth: 3.0, backgroundColor: Colors.white, color: Theme.of(context).accentColor),
+                                                                              child: CircularProgressIndicator(strokeWidth: 3.0, backgroundColor: Colors.white, color: Theme.of(context).colorScheme.secondary),
                                                                             )
                                                                           : Text(
                                                                               "Checkout",
@@ -525,7 +528,7 @@ class _GearScreenState extends State<GearScreen> {
                           width: MediaQuery.of(context).size.width / 1.5,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16.0),
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                           padding: EdgeInsets.symmetric(vertical: 12.0),
                           child: Text(
@@ -541,7 +544,7 @@ class _GearScreenState extends State<GearScreen> {
               //Loading
               return Center(
                 child: CircularProgressIndicator(
-                    color: Theme.of(context).accentColor),
+                    color: Theme.of(context).colorScheme.secondary),
               );
             },
           ),
@@ -554,7 +557,7 @@ class _GearScreenState extends State<GearScreen> {
               width: 28.0,
               height: 28.0,
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 boxShadow: [
                   BoxShadow(

@@ -48,7 +48,7 @@ class SavedTab extends StatelessWidget {
                   padding: const EdgeInsets.all(48.0),
                   child: Center(
                     child: CircularProgressIndicator(
-                        color: Theme.of(context).accentColor),
+                        color: Theme.of(context).colorScheme.secondary),
                   ),
                 );
               },

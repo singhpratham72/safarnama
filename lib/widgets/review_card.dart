@@ -29,14 +29,14 @@ class ReviewCard extends StatelessWidget {
               Icon(
                 Icons.check_circle_rounded,
                 size: 16.0,
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               )
             ],
           ),
           Text(
             '$reviewStars',
             style: headingText.copyWith(
-                color: Theme.of(context).accentColor, fontSize: 16.0),
+                color: Theme.of(context).colorScheme.secondary, fontSize: 16.0),
           ),
           Text(
             review,

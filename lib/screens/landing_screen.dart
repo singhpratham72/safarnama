@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/constants.dart';
@@ -69,8 +68,9 @@ class _LandingScreenState extends State<LandingScreen> {
                                     TextSpan(
                                         text: 'trek',
                                         style: TextStyle(
-                                            color:
-                                                Theme.of(context).accentColor))
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary))
                                   ]),
                             ),
                           ]),
@@ -89,11 +89,11 @@ class _LandingScreenState extends State<LandingScreen> {
                                 fit: BoxFit.fitHeight,
                                 image: NetworkImage(FirebaseAuth
                                         .instance.currentUser.photoURL ??
-                                    'https://firebasestorage.googleapis.com/v0/b/safarnama-9b3f1.appspot.com/o/users%2Fanonymous.jpg?alt=media&token=3a3df200-04f6-43d3-87eb-a33fa4c3b7b4'),
+                                    'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'),
                               ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                       )
                     ],
@@ -115,7 +115,9 @@ class _LandingScreenState extends State<LandingScreen> {
                               TextSpan(
                                   text: 'treks',
                                   style: TextStyle(
-                                      color: Theme.of(context).accentColor))
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary))
                             ]),
                       ),
                       GestureDetector(
@@ -137,7 +139,7 @@ class _LandingScreenState extends State<LandingScreen> {
                               ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                       )
                     ],
@@ -159,7 +161,9 @@ class _LandingScreenState extends State<LandingScreen> {
                               TextSpan(
                                   text: 'gear',
                                   style: TextStyle(
-                                      color: Theme.of(context).accentColor))
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary))
                             ]),
                       ),
                       GestureDetector(
@@ -181,7 +185,7 @@ class _LandingScreenState extends State<LandingScreen> {
                               ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)),
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                       )
                     ],
@@ -225,7 +229,7 @@ class _LandingScreenState extends State<LandingScreen> {
             iconSize: 36.0,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            selectedItemColor: Theme.of(context).accentColor,
+            selectedItemColor: Theme.of(context).colorScheme.secondary,
             unselectedItemColor: Theme.of(context).disabledColor,
             items: [
               BottomNavigationBarItem(

@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthenticationService(FirebaseAuth.instance),
         ),
         StreamProvider(
+          initialData: null,
           create: (context) =>
               context.read<AuthenticationService>().authStateChanges,
         )
@@ -45,7 +46,18 @@ class MyApp extends StatelessWidget {
           '/trek': (context) => TrekScreen(),
         },
         theme: ThemeData(
-          accentColor: Color(0xFF06BEBE),
+          colorScheme: ColorScheme(
+              brightness: Brightness.light,
+              primary: Color(0xFF06BEBE),
+              onPrimary: Colors.black,
+              secondary: Color(0xFF06BEBE),
+              onSecondary: Colors.black,
+              error: Colors.redAccent,
+              onError: Colors.white,
+              background: Color(0xFFEFEEEE),
+              onBackground: Color(0xFF06BEBE),
+              surface: Color(0xFFC1C1C1),
+              onSurface: Color(0xFF06BEBE)),
           primaryColor: Color(0xFF06BEBE),
           highlightColor: Color(0xFF06BEBE),
           dialogBackgroundColor: Color(0xFFEFEEEE),

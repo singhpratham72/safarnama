@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:provider/provider.dart';
 import 'package:safarnama/models/user.dart';
@@ -107,7 +106,7 @@ class _HomeTabState extends State<HomeTab> {
                     onChanged: (text) {
                       initiateSearch(text);
                     },
-                    cursorColor: Theme.of(context).accentColor,
+                    cursorColor: Theme.of(context).colorScheme.secondary,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Search for treks in India',
@@ -170,7 +169,7 @@ class _HomeTabState extends State<HomeTab> {
                       text: TextSpan(
                           text: 'Treks ',
                           style: headingText.copyWith(
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                               fontSize: 20.0),
                           children: [
                             TextSpan(
@@ -180,7 +179,9 @@ class _HomeTabState extends State<HomeTab> {
                     ),
                     StreamBuilder(
                       stream: geo
-                          .collection(collectionRef: db.treksRef)
+                          .collection(
+                              collectionRef:
+                                  (db.treksRef as Query<Map<String, dynamic>>))
                           .within(center: center, radius: radius, field: field),
                       builder: (context,
                           AsyncSnapshot<List<DocumentSnapshot>> snapshots) {
@@ -217,8 +218,7 @@ class _HomeTabState extends State<HomeTab> {
                           padding: const EdgeInsets.all(48.0),
                           child: Center(
                             child: CircularProgressIndicator(
-                              color: Theme.of(context).accentColor
-                            ),
+                                color: Theme.of(context).colorScheme.secondary),
                           ),
                         );
                       },
@@ -236,7 +236,9 @@ class _HomeTabState extends State<HomeTab> {
                                 text: TextSpan(
                                     text: 'Upcoming ',
                                     style: headingText.copyWith(
-                                        color: Theme.of(context).accentColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                         fontSize: 20.0),
                                     children: [
                                       TextSpan(
@@ -306,8 +308,9 @@ class _HomeTabState extends State<HomeTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },
@@ -324,7 +327,9 @@ class _HomeTabState extends State<HomeTab> {
                               text: TextSpan(
                                   text: 'Beginner ',
                                   style: headingText.copyWith(
-                                      color: Theme.of(context).accentColor,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                       fontSize: 20.0),
                                   children: [
                                     TextSpan(
@@ -398,8 +403,9 @@ class _HomeTabState extends State<HomeTab> {
                               padding: const EdgeInsets.all(48.0),
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color: Theme.of(context).accentColor
-                                ),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondary),
                               ),
                             );
                           },
@@ -419,7 +425,9 @@ class _HomeTabState extends State<HomeTab> {
                                 text: TextSpan(
                                     text: 'Weekend ',
                                     style: headingText.copyWith(
-                                        color: Theme.of(context).accentColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                         fontSize: 20.0),
                                     children: [
                                       TextSpan(
@@ -489,8 +497,9 @@ class _HomeTabState extends State<HomeTab> {
                                 padding: const EdgeInsets.all(48.0),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Theme.of(context).accentColor
-                                  ),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
                                 ),
                               );
                             },

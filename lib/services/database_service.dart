@@ -73,7 +73,7 @@ class DatabaseService {
     //Initialize duration and date
     String name = 'Buran Ghati';
     int duration = 4;
-    DateTime date = DateTime(2021, 4, 5);
+    DateTime date = DateTime(2023, 4, 5);
     int price = 8999;
     String type = 'summer';
     List<Timestamp> dates = [];
@@ -81,8 +81,8 @@ class DatabaseService {
       dates.add(Timestamp.fromDate(date));
       date = date.add(Duration(days: duration + 3));
     }
-    if (date.isBefore(DateTime(2021, 4, 1)) ||
-        date.isAfter(DateTime(2021, 11, 1)))
+    if (date.isBefore(DateTime(2023, 4, 1)) ||
+        date.isAfter(DateTime(2023, 11, 1)))
       type = 'winter';
     else
       type = 'summer';
@@ -136,7 +136,8 @@ class DatabaseService {
   Future<void> addSearchString() async {
     QuerySnapshot treks = await gearsRef.get();
     treks.docs.forEach((gear) {
-      String name = gear.data()['name'];
+      Map<String, dynamic> data = gear.data();
+      String name = data['name'];
       String searchString = name.substring(0, 1);
       gearsRef.doc(gear.id).update({'searchString': searchString});
       print(searchString);
@@ -173,17 +174,17 @@ class DatabaseService {
   }
 
   Future<String> getTrekName(String trekID) async {
-    return await treksRef
-        .doc(trekID)
-        .get()
-        .then((trekData) => trekData.data()['name']);
+    return await treksRef.doc(trekID).get().then((trekData) {
+      Map<String, dynamic> data = trekData.data();
+      return data['name'];
+    });
   }
 
   Future<String> getTrekImage(String trekID) async {
-    return await treksRef
-        .doc(trekID)
-        .get()
-        .then((trekData) => trekData.data()['images'][0]);
+    return await treksRef.doc(trekID).get().then((trekData) {
+      Map<String, dynamic> data = trekData.data();
+      return data['images'][0];
+    });
   }
 
   Future<bool> checkGoogleConnect() async {

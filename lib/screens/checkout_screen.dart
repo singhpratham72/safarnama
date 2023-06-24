@@ -139,7 +139,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     text: TextSpan(
                         text: 'Pick ',
                         style: headingText.copyWith(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             fontSize: 24.0),
                         children: [
                           TextSpan(
@@ -157,7 +157,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10.0),
                         topRight: Radius.circular(10.0)),
-                    border: Border.all(color: Theme.of(context).accentColor)),
+                    border: Border.all(
+                        color: Theme.of(context).colorScheme.secondary)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
@@ -169,10 +170,11 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                             color: Colors.white,
                             fontSize: 20.0,
                             fontWeight: FontWeight.w500),
-                        backgroundColor: Theme.of(context).accentColor),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary),
                     monthCellStyle: DateRangePickerMonthCellStyle(
-                        textStyle:
-                            TextStyle(color: Theme.of(context).accentColor),
+                        textStyle: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary),
                         specialDatesTextStyle: TextStyle(color: Colors.black87),
                         blackoutDateTextStyle:
                             TextStyle(color: Theme.of(context).disabledColor)),
@@ -186,9 +188,12 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                         specialDates: specialDates,
                         blackoutDates: blackOutDates,
                         showTrailingAndLeadingDates: false),
-                    rangeSelectionColor:
-                        Theme.of(context).accentColor.withOpacity(0.2),
-                    endRangeSelectionColor: Theme.of(context).accentColor,
+                    rangeSelectionColor: Theme.of(context)
+                        .colorScheme
+                        .secondary
+                        .withOpacity(0.2),
+                    endRangeSelectionColor:
+                        Theme.of(context).colorScheme.secondary,
                     controller: _pickerController,
                     initialDisplayDate: _pickerController.displayDate,
                     initialSelectedRange: _pickerController.selectedRange,
@@ -196,7 +201,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     enablePastDates: false,
                     showNavigationArrow: true,
                     minDate: DateTime.now(),
-                    maxDate: DateTime(2021, 12, 31),
+                    maxDate: DateTime(2023, 12, 31),
                   ),
                 ),
               ),
@@ -207,9 +212,12 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     //     bottomLeft: Radius.circular(10.0),
                     //     bottomRight: Radius.circular(10.0)),
                     border: Border(
-                  bottom: BorderSide(color: Theme.of(context).accentColor),
-                  left: BorderSide(color: Theme.of(context).accentColor),
-                  right: BorderSide(color: Theme.of(context).accentColor),
+                  bottom: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary),
+                  left: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary),
+                  right: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary),
                   top: BorderSide(color: Colors.white),
                 )),
                 alignment: Alignment.center,
@@ -223,7 +231,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                         TextSpan(
                             text: ' to ',
                             style: TextStyle(
-                                color: Theme.of(context).accentColor)),
+                                color:
+                                    Theme.of(context).colorScheme.secondary)),
                         TextSpan(
                             text:
                                 '${dateFormat.format(_pickerController.selectedRange.endDate)}',
@@ -250,7 +259,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                       width: MediaQuery.of(context).size.width / 1.5,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       padding: EdgeInsets.symmetric(vertical: 12.0),
                       child: Text(
@@ -291,7 +300,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     text: TextSpan(
                         text: 'Fellow ',
                         style: headingText.copyWith(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             fontSize: 24.0),
                         children: [
                           TextSpan(
@@ -311,7 +320,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                         width: MediaQuery.of(context).size.width / 1.5,
                         child: TextField(
                           controller: name1,
-                          cursorColor: Theme.of(context).accentColor,
+                          cursorColor: Theme.of(context).colorScheme.secondary,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             labelStyle: TextStyle(
@@ -325,7 +334,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
@@ -339,7 +348,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     DropdownButton(
                         style: headingText.copyWith(
                             color: name1.text.isNotEmpty
-                                ? Theme.of(context).accentColor
+                                ? Theme.of(context).colorScheme.secondary
                                 : Theme.of(context).disabledColor),
                         value: ageList[0],
                         onChanged: (selectedAge) {
@@ -368,7 +377,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                         child: TextField(
                           enabled: name1.text.isNotEmpty,
                           controller: name2,
-                          cursorColor: Theme.of(context).accentColor,
+                          cursorColor: Theme.of(context).colorScheme.secondary,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             labelStyle: TextStyle(
@@ -382,7 +391,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
@@ -396,7 +405,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     DropdownButton(
                         style: headingText.copyWith(
                             color: name2.text.isNotEmpty
-                                ? Theme.of(context).accentColor
+                                ? Theme.of(context).colorScheme.secondary
                                 : Theme.of(context).disabledColor),
                         value: ageList[1],
                         onChanged: (selectedAge) {
@@ -425,7 +434,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                         child: TextField(
                           controller: name3,
                           enabled: name2.text.isNotEmpty,
-                          cursorColor: Theme.of(context).accentColor,
+                          cursorColor: Theme.of(context).colorScheme.secondary,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                             labelStyle: TextStyle(
@@ -439,7 +448,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
@@ -453,7 +462,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     DropdownButton(
                         style: headingText.copyWith(
                             color: name3.text.isNotEmpty
-                                ? Theme.of(context).accentColor
+                                ? Theme.of(context).colorScheme.secondary
                                 : Theme.of(context).disabledColor),
                         value: ageList[2],
                         onChanged: (selectedAge) {
@@ -512,7 +521,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         color: name1.text.isNotEmpty
-                            ? Theme.of(context).accentColor
+                            ? Theme.of(context).colorScheme.secondary
                             : Theme.of(context).disabledColor,
                       ),
                       padding: EdgeInsets.symmetric(vertical: 12.0),
@@ -554,7 +563,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     text: TextSpan(
                         text: 'Confirm ',
                         style: headingText.copyWith(
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             fontSize: 24.0),
                         children: [
                           TextSpan(
@@ -566,7 +575,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
               ),
               Container(
                 decoration: BoxDecoration(
-                    border: Border.all(color: Theme.of(context).accentColor),
+                    border: Border.all(
+                        color: Theme.of(context).colorScheme.secondary),
                     borderRadius: BorderRadius.all(Radius.circular(12.0))),
                 margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 24.0),
                 padding: const EdgeInsets.symmetric(
@@ -648,8 +658,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                       children: [
                         TextSpan(
                             text: '₹${booking.price}.0',
-                            style:
-                                TextStyle(color: Theme.of(context).accentColor))
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary))
                       ]),
                 ),
               ),
@@ -715,7 +725,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         color: name1.text.isNotEmpty
-                            ? Theme.of(context).accentColor
+                            ? Theme.of(context).colorScheme.secondary
                             : Theme.of(context).disabledColor,
                       ),
                       padding: EdgeInsets.symmetric(vertical: 12.0),
@@ -726,7 +736,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                               child: CircularProgressIndicator(
                                   strokeWidth: 3.0,
                                   backgroundColor: Colors.white,
-                                  color: Theme.of(context).accentColor),
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
                             )
                           : Text(
                               "Checkout",
